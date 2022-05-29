@@ -20,6 +20,18 @@ public static class QApi {
 	}
 
 	/// <summary>
+	/// Loads a sound with its volume
+	/// </summary>
+	/// <param name="path">The path of the sound, starting from Content/</param>
+	/// <param name="volume">Volume to play sound at, from 0.0 to 1.0 inclusive</param>
+	public static Sound LoadSound(string path, float volume=1.0f) {
+		Sound sound = class_235.method_616(path);
+		patch_SoundVolume.AddVolumeEntry(sound.field_4060, volume);
+		patch_class_201.customSounds.Add(sound);
+		return sound;
+	}
+
+	/// <summary>
 	/// Adds a part type to the end of a part panel section, making it accessible for placement.
 	/// This does not allow for adding inputs or outputs.
 	/// </summary>
